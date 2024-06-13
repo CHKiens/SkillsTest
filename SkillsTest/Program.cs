@@ -9,7 +9,7 @@
             Dog dog3 = new Dog(3, "Humle", "Broholmer", "2019");
 
             Member member1 = new Member(1, "Anders", "Københavnsvej 1", new DateTime(1995, 5, 4), "20 20 20 20", "and@gmail.com");
-            Member member2 = new Member(1, "Lone", "Fiolstræde 15", new DateTime(1984, 12, 10), "88 88 88 88", "lone@gmail.com");
+            Member member2 = new Member(2, "Lone", "Fiolstræde 15", new DateTime(1984, 12, 10), "88 88 88 88", "lone@gmail.com");
 
             Console.WriteLine(dog1);
             Console.WriteLine(dog2);
@@ -24,6 +24,16 @@
 
             member1.PrintDogs();
             member2.PrintDogs();
+
+            member1.RemoveDog(dog1);
+            member1.PrintDogs();
+
+            member1.RegisterDog(dog1);
+
+            Console.WriteLine($"{member1.Name} Age: {member1.Age}");
+
+            Console.WriteLine($"{member1.Name} Member Fee: {member1.MemberFee(500)} kr.");
+            Console.WriteLine($"{member1.Name} Member Fee: {member1.MemberFee(1000)} kr.");
 
         }
     }

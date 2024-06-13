@@ -29,21 +29,32 @@ namespace SkillsTest
             Email = email;
             Dogs = new List<Dog> { };
         }
+        public int Age
+        {
+            get { return DateTime.Now.Year - BirthDate.Year ; }
+        }
 
+        public double MemberFee(double baseFee)
+        {
+            return Dogs.Count * baseFee;
+            
+        }
         public void RegisterDog(Dog dog)
         {
             Dogs.Add(dog);
+            Console.WriteLine($"Added {dog.Name} to {this.Name}");
             
         }
 
         public void RemoveDog(Dog dog)
         {
             Dogs.Remove(dog);
+            Console.WriteLine($"Removed {dog.Name} from {this.Name}");
         }
 
         public void PrintDogs()
         {
-            Console.WriteLine($"{Name} owns:\n");
+            Console.WriteLine($"{Name} owns:");
             foreach (Dog dog in Dogs)
             {
                 Console.WriteLine($"ID: {dog.ID} - Name: {dog.Name} - Race: {dog.Race} - Year of Birth: {dog.YearOfBirth}");
