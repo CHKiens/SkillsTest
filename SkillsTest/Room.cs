@@ -18,6 +18,8 @@ namespace SkillsTest
 
         public bool RentedOut { get; set; }
 
+        public string RenterName { get; set; }
+
         public Room(int id, string name)
         {
             ID = id;

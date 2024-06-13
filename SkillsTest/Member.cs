@@ -114,12 +114,13 @@ namespace SkillsTest
                 room.DateStart = startDate;
                 room.DateStart = endDate;
                 room.RentedOut = true;
+                room.RenterName = this.Name;
                 Rooms.Add(room);
                 Console.WriteLine($"Added {room.Name} to {this.Name}");
             }
             else
             {
-                Console.WriteLine($"{room.Name} already rented out to {this.Name}");
+                Console.WriteLine($"{room.Name} already rented out to {room.RenterName}");
             }
 
         }
