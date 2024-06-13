@@ -18,6 +18,7 @@ namespace SkillsTest
         public string Phone { get; set; }
         public string Email { get; set; }
         public List<Dog> Dogs { get; set; }
+        public List<Room> Rooms { get; set; }
 
         public Member(int id, string name, string adress, DateTime birthDate, string phone, string email)
         {
@@ -28,6 +29,7 @@ namespace SkillsTest
             Phone = phone;
             Email = email;
             Dogs = new List<Dog> { };
+            Rooms = new List<Room> { };
         }
         public int Age
         {
@@ -98,10 +100,34 @@ namespace SkillsTest
             
         }
 
+        
+
         public void RemoveDog(Dog dog)
         {
             Dogs.Remove(dog);
             Console.WriteLine($"Removed {dog.Name} from {this.Name}");
+        }
+        public void RegisterRoom(Room room, DateTime startDate, DateTime endDate)
+        {
+            if (room.RentedOut == false)
+            {
+                room.DateStart = startDate;
+                room.DateStart = endDate;
+                room.RentedOut = true;
+                Rooms.Add(room);
+                Console.WriteLine($"Added {room.Name} to {this.Name}");
+            }
+            else
+            {
+                Console.WriteLine($"{room.Name} already rented out to {this.Name}");
+            }
+
+        }
+        public void RemoveRoom(Room room)
+        {
+            room.RentedOut = false;
+            Rooms.Remove(room);
+            Console.WriteLine($"Removed {room.Name} from {this.Name}");
         }
 
         public void PrintDogs()

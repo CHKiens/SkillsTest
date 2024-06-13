@@ -1,5 +1,7 @@
-﻿using System.Linq.Expressions;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SkillsTest
 {
@@ -16,6 +18,14 @@ namespace SkillsTest
             Member member1 = new Member(1, "Anders", "", new DateTime(1995, 5, 4), "20 20 20 20", "and@gmail.com");
             Member member2 = new Member(2, "Lone", "Fiolstræde 15", new DateTime(1984, 12, 10), "88 88 88 88", "lone@gmail.com");
             Member member3 = new Member(3, "Ole", "Peter Bangs Vej 125", new DateTime(1953, 2, 12), "", "ole@gmail.com");
+
+            Room room1 = new Room(1, "Big Room");
+            Room room2 = new Room(2, "Medium Room");
+            Room room3 = new Room(3, "Small Room");
+
+            member1.RegisterRoom(room1, new DateTime(2024, 06, 06), new DateTime(2024, 07, 07));
+            member2.RegisterRoom(room2, new DateTime(2024, 08, 10), new DateTime(2024, 08, 12));
+            member3.RegisterRoom(room2, new DateTime(2024, 09, 09), new DateTime(2024, 09, 10));
 
             Console.WriteLine(dog1);
             Console.WriteLine(dog2);
@@ -55,6 +65,8 @@ namespace SkillsTest
             }
             catch (Exception e) { Console.WriteLine($"{e.Message}"); }
             
+            
+
         }
     }
 }
