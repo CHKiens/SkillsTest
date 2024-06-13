@@ -15,9 +15,9 @@ namespace SkillsTest
         public string Name { get; set; }
         public string Adress { get; set; }
         public DateTime BirthDate { get; set; }
-        public string Phone {  get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
-        public List<Dog> Dogs{ get; set; }
+        public List<Dog> Dogs { get; set; }
 
         public Member(int id, string name, string adress, DateTime birthDate, string phone, string email)
         {
@@ -31,14 +31,66 @@ namespace SkillsTest
         }
         public int Age
         {
-            get { return DateTime.Now.Year - BirthDate.Year ; }
+            get { return DateTime.Now.Year - BirthDate.Year; }
         }
 
         public double MemberFee(double baseFee)
         {
-            return Dogs.Count * baseFee;
+            if (this.Age > 65)
+            {
+                baseFee = 500;
+                return Dogs.Count * baseFee;
+            }
+            else if (Dogs.Count > 2 && this.Age < 65)
+            {
+                baseFee = 500;
+                return 1000 + Dogs.Count-1 * baseFee;
+
+            }
+            return Dogs.Count* baseFee;
+
             
+
         }
+
+        public void Validate()
+        {
+            if (this.Age < 18)
+            {
+                Exception e = new Exception("Age must be 18 or above");
+                throw e;
+            }
+            else if (string.IsNullOrEmpty(this.Name))
+            {
+                Exception e = new Exception("Validation Unsuccessful - missing Name input");
+                throw e;
+            }
+            else if (string.IsNullOrEmpty(this.Adress))
+            {
+                Exception e = new Exception("Validation Unsuccessful - missing Adress input");
+                throw e;
+            }
+            else if (string.IsNullOrEmpty(this.Phone))
+            {
+                Exception e = new Exception("Validation Unsuccessful - missing Phone input");
+                throw e;
+            }
+            else if (string.IsNullOrEmpty(this.Email))
+            {
+                Exception e = new Exception("Validation Unsuccessful - missing Email input");
+                throw e;
+            }
+            else
+            {
+                Console.WriteLine("Validation Successful");
+            }
+
+        }
+
+        //public void Validate()
+        //{
+        //    try { }
+        //}
         public void RegisterDog(Dog dog)
         {
             Dogs.Add(dog);
